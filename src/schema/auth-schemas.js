@@ -11,8 +11,8 @@ export const LoginSchema = {
 
 const signupBody = schema
     .object()
-    .prop('name', schema.string().minLength(1).maxLength(80))
-    .prop('lastName', schema.string().minLength(1).maxLength(80))
+    .prop('name', schema.string().minLength(1).maxLength(80).required())
+    .prop('lastName', schema.string().minLength(1).maxLength(80).required())
     .prop('email', schema.string().format(schema.FORMATS.EMAIL).examples(['email@domain.com']).required())
     .prop('password',
         schema

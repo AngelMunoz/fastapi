@@ -1,3 +1,5 @@
+[Fastify]: https://www.fastify.io/
+[MongoDB]: https://github.com/fastify/fastify-mongodb
 # Fastapi
 
 This is a quite simple RESTful API made with [Fastify] and uses [MongoDB] as a database that includes a protected endpoint plus login/signup endpoints

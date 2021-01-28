@@ -1,6 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import jwtService from 'jsonwebtoken';
 import { Collections, JWT_SECRET } from './constants.js';
+import { LoginSchema, SignUpSchema } from './schema/auth-schemas.js';
 
 /**
  * 
@@ -26,10 +27,6 @@ export async function authRoutes(fastify, options) {
         return jwtService.sign({ user: email }, JWT_SECRET, { expiresIn: '1d' });
     }
 
-
-    fastify.addHook('preValidation', async function(request, reply) {
-        if (!request.body) { throw fastify.httpErrors.badRequest('missing body on the request'); }
-    });
     /**
      * 
      * @param {import('fastify').FastifyRequest<any>} request 
@@ -37,7 +34,6 @@ export async function authRoutes(fastify, options) {
      */
     async function login(request, reply) {
         const { email, password } = request.body;
-        if (!email || !password) { throw fastify.httpErrors.badRequest('missing body on the request'); }
 
         try {
             var user = await users.findOne({ email: request.body.email }, { projection: { email: 1, password: 1 } })
@@ -65,7 +61,6 @@ export async function authRoutes(fastify, options) {
      */
     async function signup(request, reply) {
         const { email, password, ...userInfo } = request.body;
-        if (!email || !password) { throw fastify.httpErrors.badRequest('missing email or password on the request'); }
 
         const userExists = await exists(email);
         if (userExists) { throw fastify.httpErrors.badRequest('Email already exists'); }
@@ -83,6 +78,6 @@ export async function authRoutes(fastify, options) {
         return { user: email, token };
     }
 
-    fastify.post('/auth/login', login);
-    fastify.post('/auth/signup', signup);
+    fastify.post('/auth/login', { schema: LoginSchema }, login);
+    fastify.post('/auth/signup', { schema: SignUpSchema }, signup);
 }

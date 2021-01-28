@@ -15,7 +15,6 @@
         "NODE_ENV": "development"
       },
       "outputCapture": "std",
-      "killBehavior": "polite",
       "showAsyncStacks": true,
       "smartStep": true,
       "trace": true

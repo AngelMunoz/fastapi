@@ -4,6 +4,7 @@ dependencies:
   fastify-mongodb: 2.0.1
   fastify-plugin: 3.0.0
   fastify-sensible: 3.1.0
+  fluent-json-schema: 2.0.3
   jsonwebtoken: 8.5.1
 devDependencies:
   '@types/node': 14.14.22
@@ -226,6 +227,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-4zPxDyhCyiN2wIAtSLI6gc82/EjqZc1onI4Mz/l0pWrAlsSfYH/2ZIcU+e3oA2wDwbzIWNKwa23F8rh6+DRWkw==
+  /fluent-json-schema/2.0.3:
+    dependencies:
+      deepmerge: 4.2.2
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-Cd0Htv9mJfPVhrdBWNrKoIR/sYc4E2rlS+i3cooYwJi08uEree7daWNw0ZFw1djG4uajDxSjsiHPxAEgzgOqQQ==
   /forwarded/0.1.2:
     dev: false
     engines:
@@ -640,4 +649,5 @@ specifiers:
   fastify-mongodb: ^2.0.1
   fastify-plugin: ^3.0.0
   fastify-sensible: ^3.1.0
+  fluent-json-schema: ^2.0.3
   jsonwebtoken: ^8.5.1

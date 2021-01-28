@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "checkJs": true
+  },
+  "include": ["src"],
+  "typeAcquisition": {
+    "enable": true
+  }
+}
